@@ -1,0 +1,37 @@
+# Project Overview
+Jarosz Logistics is a single-page marketing site served from static HTML. Styling is handled with embedded CSS and no external dependencies. JavaScript is limited to setting the footer year and enabling smooth scrolling for in-page navigation.
+
+# Entry Points
+- `index.html`: full document containing markup, styles, and a short script block at the bottom.
+
+# UI Structure
+- Sticky header with brand, navigation, and call-to-action buttons.
+- Hero section highlighting services with custom SVG illustration.
+- Services grid explaining offerings and value propositions.
+- Contact panel with quick access to phone, email, and service area info.
+- Footer auto-updates to the current year via inline script.
+
+# Styling Notes
+- CSS variables (`:root`) define the color system; keep new colors consistent or extend via variables.
+- Layout uses flexbox and CSS grid; preserve responsive breakpoints when adding sections.
+- Existing gradients and shadows create the visual identity—match tone if expanding the design.
+
+# JavaScript Notes
+- Vanilla JS only; keep it lightweight and scoped at the bottom of `index.html`.
+- Smooth scrolling hooks onto anchor links targeting in-page sections. Ensure new anchors use IDs.
+
+# Testing / Preview
+- Open `index.html` directly in a browser for manual verification.
+- Validate layout across desktop (>900px) and tablet/mobile breakpoints.
+
+# Accessibility
+- Existing elements include ARIA labels and visually hidden headings for screen readers. Maintain or enhance these patterns when editing content.
+
+# Content Guidelines
+- Copy leans on reliability and timeliness messaging; keep tone professional and concise.
+- Update placeholders like phone/email once real details are available.
+
+# Future Enhancements Ideas
+- Add testimonials or metrics section beneath services.
+- Integrate a lightweight contact form (consider static form services) while keeping site static.
+- Include location map or service coverage visualization if assets become available.
