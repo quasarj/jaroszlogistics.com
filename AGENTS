@@ -3,6 +3,17 @@ Jarosz Logistics is a static, multi-page marketing site for a Northwest Arkansas
 small business offering three services: mobile auto detailing, smart-home
 installs, and box-truck logistics. The site is hosted on a private VPS.
 
+# URL Prefix / Portability
+All asset and inter-page links use **relative paths** (no leading `/`), so the
+site works at any URL prefix — `/`, `/new`, `/foo/bar`, etc. — without changes.
+- Root pages (`index.html`) reference assets as `assets/...` and siblings as
+  `detailing/`, `smart-home/`, `logistics/`.
+- Sub-pages (`detailing/index.html` etc.) use `../assets/...` and
+  `../detailing/` etc. to climb out of their directory first.
+- Same-page fragment links (`#book`) stay as bare fragments — do not prefix.
+If you add a new page, follow the same depth-based convention. Avoid `<base
+href>` because it breaks fragment-only links.
+
 # Structure
 - `index.html` — landing page; hero + three service cards (detailing, smart
   home, logistics) + contact.
@@ -26,7 +37,8 @@ installs, and box-truck logistics. The site is hosted on a private VPS.
   browsers become a target.
 
 # JavaScript Notes
-- Vanilla JS only, loaded from `/assets/js/main.js` at the bottom of each page.
+- Vanilla JS only, loaded from `assets/js/main.js` (root pages) or
+  `../assets/js/main.js` (sub-pages) at the bottom of each page.
 - The active nav state is derived from `<body data-page="...">`; matching
   `<a data-page="...">` entries in `nav.primary` receive `.active`.
 - Smooth scroll hooks every `a[href^="#"]`; ensure new anchors use real IDs.
