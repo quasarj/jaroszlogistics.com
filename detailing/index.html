@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Mobile Auto Detailing in NWA — Jarosz Logistics</title>
+        <meta
+            name="description"
+            content="Book a mobile auto detail in Fayetteville and Northwest Arkansas. Full details, interior/exterior, biohazard, add-ons. Pick your date on the calendar."
+        />
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+    </head>
+    <body data-page="detail" class="page-detail">
+        <header>
+            <div class="wrap">
+                <div class="row">
+                    <a class="brand" href="/">
+                        <div class="logo" aria-hidden="true">JL</div>
+                        <div>
+                            <div class="brand-name">Jarosz Logistics</div>
+                            <div class="brand-tag">Detail. Install. Deliver.</div>
+                        </div>
+                    </a>
+                    <nav class="primary" aria-label="Primary">
+                        <a href="/detailing/" data-page="detail">Detailing</a>
+                        <a href="/smart-home/" data-page="smart">Smart Home</a>
+                        <a href="/logistics/" data-page="logistics">Logistics</a>
+                        <a href="#book" class="btn">Book Now</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="wrap hero">
+                <p class="kicker">Mobile Auto Detailing</p>
+                <h1>We bring the detail to your driveway.</h1>
+                <p class="sub">
+                    Serving Fayetteville and the Northwest Arkansas metro. Pick a
+                    date and time on the calendar below — once you book, that slot
+                    is locked in and Julius gets notified right away.
+                </p>
+                <div class="stack">
+                    <a href="#book" class="btn">Pick a date</a>
+                    <a href="#packages" class="cta">See packages</a>
+                </div>
+            </section>
+
+            <section id="packages" class="wrap" aria-labelledby="packages-h">
+                <h2 id="packages-h">Packages &amp; pricing</h2>
+                <p class="lede">
+                    All packages include tire shine and a thorough vacuum.
+                    Add-ons stack onto any package.
+                </p>
+
+                <div class="grid-2">
+                    <div class="pricing">
+                        <h3>Detail packages</h3>
+                        <div class="row-item featured">
+                            <span class="name">
+                                Full Detail Mega Special
+                                <span class="note">flagship — inside &amp; out</span>
+                            </span>
+                            <span class="price">$229</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Interior only</span>
+                            <span class="price">$169</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Exterior only</span>
+                            <span class="price">$149</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">
+                                Handwax + Exterior Detail
+                                <span class="note">paint protection</span>
+                            </span>
+                            <span class="price">$150</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">
+                                Biohazard cleaning
+                                <span class="note">specialty deep clean</span>
+                            </span>
+                            <span class="price">$199</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing">
+                        <h3>Add-ons</h3>
+                        <div class="row-item">
+                            <span class="name">
+                                Shampoo
+                                <span class="note">per row of seats</span>
+                            </span>
+                            <span class="price">$30</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Pet hair removal</span>
+                            <span class="price">$50</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Headliner</span>
+                            <span class="price">$50</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Headlight restoration</span>
+                            <span class="price">$100</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Engine bay cleaning</span>
+                            <span class="price">$85</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Odor treatment</span>
+                            <span class="price">$100</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Interior stain resistant</span>
+                            <span class="price">$50</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Clay bar + sealant</span>
+                            <span class="price">$100</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Scent / smoke smell treatment</span>
+                            <span class="price">$80</span>
+                        </div>
+                        <div class="row-item">
+                            <span class="name">Tire shine</span>
+                            <span class="price">Included</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="book" class="wrap" aria-labelledby="book-h">
+                <h2 id="book-h">Book your appointment</h2>
+                <p class="lede">
+                    Pick a date and time that works for you. You'll get an instant
+                    confirmation and Julius will be notified. Need something
+                    custom? <a href="#contact">Reach out directly.</a>
+                </p>
+
+                <!--
+                  Cal.com inline embed.
+                  TODO before launch:
+                    1. Create a Cal.com account using julius@jaroszlogistics.com
+                    2. Create an event type named "Auto Detail" (suggested
+                       duration: 2h; buffer: 30m; location: customer address).
+                    3. Set Julius's availability under Availability -> Working Hours.
+                    4. Replace USERNAME/SLUG below with the real Cal link
+                       (e.g. "jaroszlogistics/auto-detail"). It appears in
+                       three places in this script.
+                -->
+                <div id="cal-inline"></div>
+                <script>
+                    (function (C, A, L) {
+                        let p = function (a, ar) {
+                            a.q.push(ar);
+                        };
+                        let d = C.document;
+                        C.Cal =
+                            C.Cal ||
+                            function () {
+                                let cal = C.Cal;
+                                let ar = arguments;
+                                if (!cal.loaded) {
+                                    cal.ns = {};
+                                    cal.q = cal.q || [];
+                                    d.head.appendChild(
+                                        d.createElement("script"),
+                                    ).src = A;
+                                    cal.loaded = true;
+                                }
+                                if (ar[0] === L) {
+                                    const api = function () {
+                                        p(api, arguments);
+                                    };
+                                    const namespace = ar[1];
+                                    api.q = api.q || [];
+                                    if (typeof namespace === "string") {
+                                        cal.ns[namespace] =
+                                            cal.ns[namespace] || api;
+                                        p(cal.ns[namespace], ar);
+                                        p(cal, ["initNamespace", namespace]);
+                                    } else {
+                                        p(cal, ar);
+                                    }
+                                    return;
+                                }
+                                p(cal, ar);
+                            };
+                    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+                    Cal("init", "auto-detail", { origin: "https://cal.com" });
+                    Cal.ns["auto-detail"]("inline", {
+                        elementOrSelector: "#cal-inline",
+                        // TODO: replace with real Cal.com link
+                        calLink: "jaroszlogistics/auto-detail",
+                        config: { layout: "month_view", theme: "dark" },
+                    });
+                    Cal.ns["auto-detail"]("ui", {
+                        theme: "dark",
+                        cssVarsPerTheme: {
+                            dark: { "cal-brand": "#fbbf24" },
+                        },
+                        hideEventTypeDetails: false,
+                        layout: "month_view",
+                    });
+                </script>
+            </section>
+
+            <section id="contact" class="wrap" aria-labelledby="contact-h">
+                <div class="panel">
+                    <h3 id="contact-h" style="margin: 0 0 6px">
+                        Prefer to talk first?
+                    </h3>
+                    <p style="margin: 0 0 18px; color: var(--muted)">
+                        Big job, fleet, or odd schedule? Call or email and we'll
+                        sort it out.
+                    </p>
+                    <div class="contact-card">
+                        <div class="contact-item">
+                            <b>Phone</b>
+                            <a href="tel:+10000000000">(000) 000-0000</a>
+                        </div>
+                        <div class="contact-item">
+                            <b>Email</b>
+                            <a href="mailto:julius@jaroszlogistics.com">julius@jaroszlogistics.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <b>Service area</b>
+                            <span>Fayetteville &amp; NWA metro</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="wrap footer-row">
+                <small>© <span data-year></span> Jarosz Logistics. All rights reserved.</small>
+                <div class="footer-links">
+                    <a href="/detailing/">Detailing</a>
+                    <a href="/smart-home/">Smart Home</a>
+                    <a href="/logistics/">Logistics</a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="/assets/js/main.js"></script>
+    </body>
+</html>

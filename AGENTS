@@ -1,37 +1,62 @@
 # Project Overview
-Jarosz Logistics is a single-page marketing site served from static HTML. Styling is handled with embedded CSS and no external dependencies. JavaScript is limited to setting the footer year and enabling smooth scrolling for in-page navigation.
+Jarosz Logistics is a static, multi-page marketing site for a Northwest Arkansas
+small business offering three services: mobile auto detailing, smart-home
+installs, and box-truck logistics. The site is hosted on a private VPS.
 
-# Entry Points
-- `index.html`: full document containing markup, styles, and a short script block at the bottom.
-
-# UI Structure
-- Sticky header with brand, navigation, and call-to-action buttons.
-- Hero section highlighting services with custom SVG illustration.
-- Services grid explaining offerings and value propositions.
-- Contact panel with quick access to phone, email, and service area info.
-- Footer auto-updates to the current year via inline script.
+# Structure
+- `index.html` — landing page; hero + three service cards (detailing, smart
+  home, logistics) + contact.
+- `detailing/index.html` — detailing service page with pricing tables and an
+  embedded Cal.com booking calendar.
+- `smart-home/index.html` — install service page with pricing and contact CTA.
+- `logistics/index.html` — trucking/last-mile content.
+- `assets/css/styles.css` — shared design system.
+- `assets/js/main.js` — year stamping, smooth scroll, active nav highlight.
 
 # Styling Notes
-- CSS variables (`:root`) define the color system; keep new colors consistent or extend via variables.
-- Layout uses flexbox and CSS grid; preserve responsive breakpoints when adding sections.
-- Existing gradients and shadows create the visual identity—match tone if expanding the design.
+- CSS variables in `:root` define the color system. Per-page accent is set by
+  a `body.page-*` class (`page-detail` amber, `page-smart` teal,
+  `page-logistics` sky). Add new colors via variables, not hex literals.
+- Layout uses flexbox and CSS grid. Mobile-first; the main breakpoints are
+  700px (contact card), 800px (service grid), 900px (two-column grids).
+- The dark theme uses radial gradients on `<body>` for ambient color; keep
+  background changes consistent.
+- Uses `color-mix()` for tinted backgrounds — requires modern browsers
+  (Chrome 111+, Safari 16.2+, Firefox 113+). Provide rgba fallbacks if older
+  browsers become a target.
 
 # JavaScript Notes
-- Vanilla JS only; keep it lightweight and scoped at the bottom of `index.html`.
-- Smooth scrolling hooks onto anchor links targeting in-page sections. Ensure new anchors use IDs.
+- Vanilla JS only, loaded from `/assets/js/main.js` at the bottom of each page.
+- The active nav state is derived from `<body data-page="...">`; matching
+  `<a data-page="...">` entries in `nav.primary` receive `.active`.
+- Smooth scroll hooks every `a[href^="#"]`; ensure new anchors use real IDs.
+
+# Cal.com Booking
+- The detailing page (`detailing/index.html#book`) embeds Cal.com inline.
+- The embed uses placeholder `calLink: "jaroszlogistics/auto-detail"`.
+  Before launch:
+    1. Create a Cal.com account at https://cal.com using
+       `julius@jaroszlogistics.com`.
+    2. Create an event type "Auto Detail" (suggested 2h, 30m buffer, in-person
+       at attendee location).
+    3. Configure availability under Availability → Working Hours.
+    4. Replace `jaroszlogistics/auto-detail` in the script block with the real
+       Cal link (username/event-slug).
+- Branding color (`cal-brand`) is set to amber `#fbbf24` to match the detailing
+  accent.
 
 # Testing / Preview
-- Open `index.html` directly in a browser for manual verification.
-- Validate layout across desktop (>900px) and tablet/mobile breakpoints.
+- Serve locally with e.g. `python3 -m http.server` from the project root
+  (file:// will break the absolute `/assets/...` paths and Cal.com embed).
+- Validate layout across mobile (<700px), tablet (~800px), and desktop.
 
 # Accessibility
-- Existing elements include ARIA labels and visually hidden headings for screen readers. Maintain or enhance these patterns when editing content.
+- Maintain ARIA labels on `<nav>` and section headings; `.sr-only` is available
+  for visually-hidden labels.
+- Keep `:focus-visible` outlines on `.btn` and `.cta`; don't strip them.
 
-# Content Guidelines
-- Copy leans on reliability and timeliness messaging; keep tone professional and concise.
-- Update placeholders like phone/email once real details are available.
-
-# Future Enhancements Ideas
-- Add testimonials or metrics section beneath services.
-- Integrate a lightweight contact form (consider static form services) while keeping site static.
-- Include location map or service coverage visualization if assets become available.
+# Content TODOs
+- Real phone number (currently `tel:+10000000000` placeholder).
+- Julius's available days/hours (configure in Cal.com).
+- Hero/gallery photos for detailing and smart-home pages.
+- USDOT/MC numbers if Julius wants them displayed.
