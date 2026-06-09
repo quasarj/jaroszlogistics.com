@@ -1,0 +1,5 @@
+# Raw originals — kept locally for re-optimization, not shipped
+src/assets/img/raw/
+
+# macOS
+.DS_Store
