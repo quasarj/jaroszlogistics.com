@@ -15,14 +15,21 @@ If you add a new page, follow the same depth-based convention. Avoid `<base
 href>` because it breaks fragment-only links.
 
 # Structure
-- `index.html` — landing page; hero + three service cards (detailing, smart
-  home, logistics) + contact.
-- `detailing/index.html` — detailing service page with pricing tables and an
-  embedded Cal.com booking calendar.
-- `smart-home/index.html` — install service page with pricing and contact CTA.
-- `logistics/index.html` — trucking/last-mile content.
-- `assets/css/styles.css` — shared design system.
-- `assets/js/main.js` — year stamping, smooth scroll, active nav highlight.
+All web content lives under `src/`; everything in `src/` is what gets rsynced
+to the server by `make deploy`. The repo root holds only the `Makefile`, this
+`AGENTS` file, and `.gitignore`.
+- `src/index.html` — landing page; hero + three service cards (detailing,
+  smart home, logistics) + contact.
+- `src/detailing/index.html` — detailing service page with pricing tables and
+  an embedded Cal.com booking calendar.
+- `src/smart-home/index.html` — install service page with pricing, gallery,
+  and embedded Cal.com booking calendar.
+- `src/logistics/index.html` — trucking/last-mile content.
+- `src/assets/css/styles.css` — shared design system.
+- `src/assets/js/main.js` — year stamping, smooth scroll, active nav
+  highlight, lightbox.
+- `src/assets/img/raw/` — raw originals (gitignored, not shipped); web
+  versions live in `src/assets/img/{detailing,smart-home}/`.
 
 # Styling Notes
 - CSS variables in `:root` define the color system. Per-page accent is set by
@@ -44,23 +51,27 @@ href>` because it breaks fragment-only links.
 - Smooth scroll hooks every `a[href^="#"]`; ensure new anchors use real IDs.
 
 # Cal.com Booking
-- The detailing page (`detailing/index.html#book`) embeds Cal.com inline.
-- The embed uses placeholder `calLink: "jaroszlogistics/auto-detail"`.
-  Before launch:
-    1. Create a Cal.com account at https://cal.com using
-       `julius@jaroszlogistics.com`.
-    2. Create an event type "Auto Detail" (suggested 2h, 30m buffer, in-person
-       at attendee location).
-    3. Configure availability under Availability → Working Hours.
-    4. Replace `jaroszlogistics/auto-detail` in the script block with the real
-       Cal link (username/event-slug).
-- Branding color (`cal-brand`) is set to amber `#fbbf24` to match the detailing
-  accent.
+The detailing and smart-home pages each embed a Cal.com inline calendar at
+`#book`, each in its own Cal namespace with its own `calLink` and brand color:
+- Detailing → namespace `auto-detail`, `jaroszlogistics/auto-detail`, amber
+  brand (`#fbbf24`).
+- Smart Home → namespace `smart-install`, `jaroszlogistics/smart-home-install`,
+  teal brand (`#14b8a6`).
+The Cal account belongs to `julius@jaroszlogistics.com`. To add a page-level
+booking elsewhere, copy the `<section id="book">` block from one of these
+pages and change three things: the namespace string in `Cal("init", …)`, the
+`calLink`, and the `cal-brand` CSS var to match the page accent.
 
 # Testing / Preview
-- Serve locally with e.g. `python3 -m http.server` from the project root
-  (file:// will break the absolute `/assets/...` paths and Cal.com embed).
+- Serve locally with `make serve` (runs `python3 -m http.server` inside
+  `src/`). `file://` will break asset paths and the Cal.com embed.
 - Validate layout across mobile (<700px), tablet (~800px), and desktop.
+
+# Deploy
+- `make deploy` rsyncs the contents of `src/` to
+  `jaroszlogistics@quasarj.com:www/` (additive — no `--delete`).
+- `make dry-run` shows what would change without writing.
+- Excludes `.DS_Store` and `assets/img/raw/` so locals don't ship.
 
 # Accessibility
 - Maintain ARIA labels on `<nav>` and section headings; `.sr-only` is available
@@ -68,7 +79,6 @@ href>` because it breaks fragment-only links.
 - Keep `:focus-visible` outlines on `.btn` and `.cta`; don't strip them.
 
 # Content TODOs
-- Real phone number (currently `tel:+10000000000` placeholder).
 - Julius's available days/hours (configure in Cal.com).
 - Hero/gallery photos for detailing and smart-home pages.
 - USDOT/MC numbers if Julius wants them displayed.
