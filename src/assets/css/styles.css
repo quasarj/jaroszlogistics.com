@@ -42,7 +42,10 @@ img { max-width: 100%; height: auto; display: block; }
 .wrap {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
+}
+@media (max-width: 480px) {
+    .wrap { padding: 0 28px; }
 }
 
 /* Header */
@@ -135,7 +138,7 @@ nav.primary a.active { color: var(--accent); }
 }
 
 /* Hero */
-.hero { padding: 56px 0 32px; }
+.hero { padding-top: 56px; padding-bottom: 32px; }
 .hero .kicker {
     color: var(--accent);
     text-transform: uppercase;
